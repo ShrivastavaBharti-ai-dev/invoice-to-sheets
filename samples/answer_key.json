@@ -1,0 +1,306 @@
+{
+  "01_narmada_dairy.pdf": {
+    "invoice": {
+      "supplier_name": "Narmada Dairy Suppliers",
+      "supplier_gstin": "23AAKFN5521Q1ZW",
+      "buyer_name": "Chai & Crumb Café",
+      "buyer_gstin": "23AAFCC4821M1ZP",
+      "invoice_number": "DS/26-27/0412",
+      "invoice_date": "2026-11-03",
+      "place_of_supply": "Madhya Pradesh",
+      "line_items": [
+        {
+          "description": "Paneer (fresh)",
+          "hsn": "0406",
+          "quantity": 10,
+          "unit": "kg",
+          "rate": 380,
+          "amount": 3800
+        },
+        {
+          "description": "Butter (unsalted)",
+          "hsn": "0405",
+          "quantity": 5,
+          "unit": "kg",
+          "rate": 520,
+          "amount": 2600
+        },
+        {
+          "description": "Fresh cream",
+          "hsn": "0401",
+          "quantity": 8,
+          "unit": "litre",
+          "rate": 210,
+          "amount": 1680
+        }
+      ],
+      "subtotal": 8080,
+      "total": 8666.0,
+      "cgst": 293.0,
+      "sgst": 293.0,
+      "igst": 0,
+      "round_off": 0
+    },
+    "expected_status": "ready"
+  },
+  "02_bhopal_fresh_produce.pdf": {
+    "invoice": {
+      "supplier_name": "Bhopal Fresh Produce Co.",
+      "supplier_gstin": "23ABOFB7710R1ZX",
+      "buyer_name": "Chai & Crumb Café",
+      "buyer_gstin": "23AAFCC4821M1ZP",
+      "invoice_number": "BFP-2026-1187",
+      "invoice_date": "2026-11-05",
+      "place_of_supply": "Madhya Pradesh",
+      "line_items": [
+        {
+          "description": "Tomatoes",
+          "hsn": "0702",
+          "quantity": 25,
+          "unit": "kg",
+          "rate": 32,
+          "amount": 800
+        },
+        {
+          "description": "Onions",
+          "hsn": "0703",
+          "quantity": 30,
+          "unit": "kg",
+          "rate": 28,
+          "amount": 840
+        },
+        {
+          "description": "Potatoes",
+          "hsn": "0701",
+          "quantity": 20,
+          "unit": "kg",
+          "rate": 24,
+          "amount": 480
+        },
+        {
+          "description": "Coriander leaves",
+          "hsn": "0709",
+          "quantity": 3,
+          "unit": "kg",
+          "rate": 90,
+          "amount": 270
+        },
+        {
+          "description": "Green chillies",
+          "hsn": "0709",
+          "quantity": 2,
+          "unit": "kg",
+          "rate": 70,
+          "amount": 140
+        }
+      ],
+      "subtotal": 2530,
+      "total": 2530,
+      "cgst": 0,
+      "sgst": 0,
+      "igst": 0,
+      "round_off": 0
+    },
+    "expected_status": "ready"
+  },
+  "03_malwa_packaging.pdf": {
+    "invoice": {
+      "supplier_name": "Malwa Packaging Solutions",
+      "supplier_gstin": "23AARFM3349L1ZU",
+      "buyer_name": "Chai & Crumb Café",
+      "buyer_gstin": "23AAFCC4821M1ZP",
+      "invoice_number": "MPS/1543",
+      "invoice_date": "2026-10-28",
+      "place_of_supply": "Madhya Pradesh",
+      "line_items": [
+        {
+          "description": "Paper cups 250 ml",
+          "hsn": "4823",
+          "quantity": 2000,
+          "unit": "pcs",
+          "rate": 1.2,
+          "amount": 2400.0
+        },
+        {
+          "description": "Kraft takeaway boxes",
+          "hsn": "4819",
+          "quantity": 500,
+          "unit": "pcs",
+          "rate": 6.5,
+          "amount": 3250.0
+        },
+        {
+          "description": "Butter paper roll",
+          "hsn": "4823",
+          "quantity": 10,
+          "unit": "roll",
+          "rate": 145,
+          "amount": 1450
+        },
+        {
+          "description": "Wooden stirrers",
+          "hsn": "4421",
+          "quantity": 1000,
+          "unit": "pcs",
+          "rate": 0.35,
+          "amount": 350.0
+        }
+      ],
+      "subtotal": 7450.0,
+      "total": 8791.0,
+      "cgst": 670.5,
+      "sgst": 670.5,
+      "igst": 0,
+      "round_off": 0
+    },
+    "expected_status": "ready"
+  },
+  "04_spice_route_interstate.pdf": {
+    "invoice": {
+      "supplier_name": "Spice Route Traders",
+      "supplier_gstin": "27ADEFS9012H1Z0",
+      "buyer_name": "Chai & Crumb Café",
+      "buyer_gstin": "23AAFCC4821M1ZP",
+      "invoice_number": "SRT/2026/0778",
+      "invoice_date": "2026-11-07",
+      "place_of_supply": "Madhya Pradesh",
+      "line_items": [
+        {
+          "description": "Cardamom (green)",
+          "hsn": "0908",
+          "quantity": 2,
+          "unit": "kg",
+          "rate": 2400,
+          "amount": 4800
+        },
+        {
+          "description": "Cinnamon sticks",
+          "hsn": "0906",
+          "quantity": 3,
+          "unit": "kg",
+          "rate": 650,
+          "amount": 1950
+        },
+        {
+          "description": "Assam CTC tea",
+          "hsn": "0902",
+          "quantity": 15,
+          "unit": "kg",
+          "rate": 340,
+          "amount": 5100
+        }
+      ],
+      "subtotal": 11850,
+      "total": 12442.0,
+      "cgst": 0,
+      "sgst": 0,
+      "igst": 592.5,
+      "round_off": -0.5
+    },
+    "expected_status": "ready"
+  },
+  "05_cleanpro_with_error.pdf": {
+    "invoice": {
+      "supplier_name": "CleanPro Hygiene Supplies",
+      "supplier_gstin": "23AAGFC6687D1ZH",
+      "buyer_name": "Chai & Crumb Café",
+      "buyer_gstin": "23AAFCC4821M1ZP",
+      "invoice_number": "CP-INV-2291",
+      "invoice_date": "2026-11-10",
+      "place_of_supply": "Madhya Pradesh",
+      "line_items": [
+        {
+          "description": "Floor cleaner 5 L",
+          "hsn": "3402",
+          "quantity": 4,
+          "unit": "can",
+          "rate": 450,
+          "amount": 1850.0
+        },
+        {
+          "description": "Dishwash liquid 5 L",
+          "hsn": "3402",
+          "quantity": 6,
+          "unit": "can",
+          "rate": 380,
+          "amount": 2280
+        },
+        {
+          "description": "Garbage bags (large)",
+          "hsn": "3923",
+          "quantity": 10,
+          "unit": "pack",
+          "rate": 120,
+          "amount": 1200
+        },
+        {
+          "description": "Hand sanitiser 500 ml",
+          "hsn": "3808",
+          "quantity": 8,
+          "unit": "bottle",
+          "rate": 165,
+          "amount": 1320
+        }
+      ],
+      "subtotal": 6650.0,
+      "total": 7847.0,
+      "cgst": 598.5,
+      "sgst": 598.5,
+      "igst": 0,
+      "round_off": 0
+    },
+    "expected_status": "blocked"
+  },
+  "06_indore_bakery_photo.jpg": {
+    "invoice": {
+      "supplier_name": "Indore Bakery Ingredients",
+      "supplier_gstin": "23AAJFI2234B1Z1",
+      "buyer_name": "Chai & Crumb Café",
+      "buyer_gstin": "23AAFCC4821M1ZP",
+      "invoice_number": "IBI/26/3310",
+      "invoice_date": "2026-11-11",
+      "place_of_supply": "Madhya Pradesh",
+      "line_items": [
+        {
+          "description": "Maida (refined flour)",
+          "hsn": "1101",
+          "quantity": 50,
+          "unit": "kg",
+          "rate": 42,
+          "amount": 2100
+        },
+        {
+          "description": "Cocoa powder",
+          "hsn": "1805",
+          "quantity": 5,
+          "unit": "kg",
+          "rate": 610,
+          "amount": 3050
+        },
+        {
+          "description": "Baking powder",
+          "hsn": "2102",
+          "quantity": 2,
+          "unit": "kg",
+          "rate": 240,
+          "amount": 480
+        },
+        {
+          "description": "Dark chocolate compound",
+          "hsn": "1806",
+          "quantity": 10,
+          "unit": "kg",
+          "rate": 395,
+          "amount": 3950
+        }
+      ],
+      "subtotal": 9580,
+      "total": 11031.0,
+      "cgst": 725.7,
+      "sgst": 725.7,
+      "igst": 0,
+      "round_off": -0.4
+    },
+    "expected_status": "ready"
+  }
+}
