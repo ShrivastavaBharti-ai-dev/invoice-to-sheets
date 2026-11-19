@@ -4,6 +4,7 @@
 """
 from __future__ import annotations
 
+import datetime
 import math
 import os
 from pathlib import Path
@@ -30,6 +31,10 @@ from invoiceflow.readers import MIME_TYPES
 ROOT = Path(__file__).resolve().parent
 SAMPLES = ROOT / "samples"
 MAX_READS_PER_SESSION = 10
+# A global safety cap shared by every visitor (on top of the per-session limit),
+# so a public demo can't run the owner's API key past a daily budget. Override
+# with the MAX_LLM_CALLS_PER_DAY environment variable.
+MAX_LLM_CALLS_PER_DAY = int(os.getenv("MAX_LLM_CALLS_PER_DAY", "200"))
 CONTRA_URL = "https://contra.com/bharti_shrivastava_zu3hypce"
 BADGE = {"ready": "✅ Ready to send", "check": "⚠️ Check the warnings", "blocked": "⛔ Blocked: fix the errors"}
 ICON = {"ok": "✅", "warning": "⚠️", "error": "⛔"}
@@ -50,6 +55,30 @@ def setting(name: str) -> str | None:
 @st.cache_resource(show_spinner=False)
 def get_reader(api_key: str | None):
     return make_reader(api_key)
+
+
+@st.cache_resource(show_spinner=False)
+def _daily_usage() -> dict:
+    """One counter shared by all sessions in this server process."""
+    return {"date": datetime.date.today(), "calls": 0}
+
+
+def _roll_day(usage: dict) -> None:
+    today = datetime.date.today()
+    if usage["date"] != today:
+        usage["date"], usage["calls"] = today, 0
+
+
+def day_calls_left() -> int:
+    usage = _daily_usage()
+    _roll_day(usage)
+    return MAX_LLM_CALLS_PER_DAY - usage["calls"]
+
+
+def record_call() -> None:
+    usage = _daily_usage()
+    _roll_day(usage)
+    usage["calls"] += 1
 
 
 def is_rate_limit(error: Exception) -> bool:
@@ -86,6 +115,8 @@ def main() -> None:
     st.markdown("**Upload a supplier invoice, PDF or phone photo. It's read, every GST calculation is checked, "
                 "and it goes into Google Sheets.** Mistakes are caught before they reach your accounts.")
     st.caption("Sample invoices are fictional: suppliers of a made-up café in Bhopal. One contains a deliberate error.")
+    st.caption("⏳ On the free demo server, the very first read can take up to a minute while it wakes up — "
+               "after that it's quick.")
 
     # ---------------------------------------------------------------- sidebar
     with st.sidebar:
@@ -108,11 +139,13 @@ def main() -> None:
             data, name = (SAMPLES / choice).read_bytes(), choice
             st.download_button("Download this sample", data, file_name=choice)
         limit_hit = reader.live and state.reads >= MAX_READS_PER_SESSION
-        if st.button("Read invoice", type="primary", disabled=data is None or limit_hit):
+        day_hit = reader.live and day_calls_left() <= 0
+        if st.button("Read invoice", type="primary", disabled=data is None or limit_hit or day_hit):
             try:
                 with st.spinner("Reading and checking the invoice…"):
                     result = parse(data, name, reader, state.registry)
                 if reader.live:
+                    record_call()
                     state.reads += 1
                 state.results.append(result)
                 state.current = len(state.results) - 1
@@ -123,6 +156,9 @@ def main() -> None:
                          else f"Couldn't read this file ({type(error).__name__}).")
         if limit_hit:
             st.caption("This demo reads 10 invoices per visit to stay inside its free API limit.")
+        elif day_hit:
+            st.caption("This public demo has paused for today after reaching its daily limit. "
+                       "Please try again tomorrow, or run it yourself with your own key.")
         st.divider()
         st.caption(f"Built by Bharti Shrivastava · [Hire me on Contra]({CONTRA_URL})")
 
